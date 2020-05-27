@@ -33,5 +33,5 @@ jobs:
       - name: Deploy to Firebase
         uses: lowply/deploy-firebase@v0.0.2
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_CI }}
           FIREBASE_PROJECT: corona-tracker-7b96f

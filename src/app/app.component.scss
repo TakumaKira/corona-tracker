@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+
+  .selector-and-credit {
+    display: flex;
+    align-items: center;
+
+    .selector {
+      width: 300px;
+    }
+    .spacer {
+      flex-grow: 1;
+      height: 56.56px;
+    }
+    .credit {
+      color: hsl(0, 0%, 80%);
+
+      .link {
+        color: hsl(0, 0%, 80%);
+      }
+    }
+  }
+  .error {
+    color: hsl(0, 0%, 80%);
+  }
+}

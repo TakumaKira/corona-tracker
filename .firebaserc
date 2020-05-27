@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "corona-tracker-7b96f",
+    "test": "corona-tracker-test"
+  }
+}

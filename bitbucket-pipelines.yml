@@ -1,0 +1,27 @@
+# Building an Angular app and deploying it to Firebase using Bitbucket Pipelines
+# https://bitbucket.org/blog/building-an-angular-app-and-deploying-it-to-firebase-using-bitbucket-pipelines
+
+image: node:12.16.2
+
+pipelines:
+  branches:
+    release/*:
+      - step:
+          name: Install, Unit tests, e2e tests, Build, Deploy to test
+          caches:
+            - node
+          deployment: test
+          script:
+            - npm install
+            - >
+              wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+                sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' && \
+                apt-get update && \
+                apt-get install -y google-chrome-stable xvfb procps
+            - npm run test:bitbucket-ci
+            - npm run e2e:bitbucket-ci
+            - npm run build
+            - pipe: atlassian/firebase-deploy:0.3.0
+              variables:
+                FIREBASE_TOKEN: "$FIREBASE_TOKEN_CI"
+                PROJECT_ID: "corona-tracker-test"

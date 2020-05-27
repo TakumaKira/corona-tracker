@@ -22,10 +22,7 @@ jobs:
         run: npm run test:github-ci
 
       - name: Run e2e test
-        run: |
-          node /home/runner/work/corona-tracker/corona-tracker/node_modules/protractor/bin/webdriver-manager clean
-          node /home/runner/work/corona-tracker/corona-tracker/node_modules/protractor/bin/webdriver-manager update --versions.chrome=81.0.4044.138
-          npm run e2e:github-ci
+        run: npm run e2e:github-ci
 
       - name: Build
         run: npm run build
